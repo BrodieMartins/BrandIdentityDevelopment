@@ -1,31 +1,39 @@
 /*
- * Tokens de marque — palette bleu/rouge PROVISOIRE.
- * ⚠️ À calibrer sur le logo réel dès réception de la capture.
+ * Tokens de marque — calibrés sur les captures du site et du logo T'chaux Devant.
+ * Bleu logo ≈ #3a7cc0 · Rouge logo ≈ #d2352b · Marine sections ≈ #0e2c4e
+ * Jaune des stickers « VOUS TRIEZ » ≈ #f2c230
  */
 
 @theme {
-  --color-navy-50: #f0f5fa;
-  --color-navy-100: #dce8f3;
-  --color-navy-200: #b9d0e6;
-  --color-navy-300: #8bb0d3;
-  --color-navy-400: #5a8aba;
-  --color-navy-500: #3a6b9e;
-  --color-navy-600: #2a5484;
-  --color-navy-700: #20426a;
-  --color-navy-800: #173352;
-  --color-navy-900: #10263f;
-  --color-navy-950: #0a1a2e;
+  --color-navy-50: #eff6fc;
+  --color-navy-100: #dcebf7;
+  --color-navy-200: #b9d6ee;
+  --color-navy-300: #8cbbe2;
+  --color-navy-400: #5c9ad1;
+  --color-navy-500: #3a7cc0;
+  --color-navy-600: #2c64a4;
+  --color-navy-700: #234f84;
+  --color-navy-800: #1b3e6a;
+  --color-navy-900: #143355;
+  --color-navy-950: #0e2c4e;
 
   --color-brand-red-50: #fdf1f0;
   --color-brand-red-100: #fbdedc;
   --color-brand-red-200: #f5b7b3;
   --color-brand-red-300: #ec8a84;
-  --color-brand-red-400: #e05b53;
-  --color-brand-red-500: #d63a31;
-  --color-brand-red-600: #c02c24;
-  --color-brand-red-700: #9e241e;
-  --color-brand-red-800: #7d1d18;
-  --color-brand-red-900: #5c1512;
+  --color-brand-red-400: #e05b51;
+  --color-brand-red-500: #d2352b;
+  --color-brand-red-600: #b92a22;
+  --color-brand-red-700: #97231d;
+  --color-brand-red-800: #781c17;
+  --color-brand-red-900: #591512;
+
+  --color-brand-yellow-100: #fdf3d3;
+  --color-brand-yellow-300: #f8d976;
+  --color-brand-yellow-400: #f2c230;
+  --color-brand-yellow-500: #e0ad15;
+
+  --font-logo: "Baloo 2", "Arial Rounded MT Bold", system-ui, sans-serif;
 }
 
 :root {

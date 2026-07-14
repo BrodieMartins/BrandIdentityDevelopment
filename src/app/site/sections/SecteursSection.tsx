@@ -11,7 +11,7 @@ export function SecteursSection() {
       title={secteurs.title}
       intro={secteurs.intro}
     >
-      <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {secteurs.zones.map((zone) => (
           <StaggerItem key={zone.name}>
             <div className="flex items-start gap-3 rounded-xl border border-navy-100 bg-white p-5">
@@ -24,6 +24,7 @@ export function SecteursSection() {
           </StaggerItem>
         ))}
       </Stagger>
+      <p className="mt-6 text-sm text-slate-500">{secteurs.outro}</p>
     </Section>
   );
 }

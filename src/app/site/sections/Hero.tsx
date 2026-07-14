@@ -5,9 +5,10 @@ import { Button } from "@/app/components/ui/button";
 import { company } from "../content";
 
 const TRUST = [
-  "Devis sous 24 h ouvrées",
-  "Prix ferme, sans surprise",
-  "Entreprise locale et assurée",
+  "Devis gratuit",
+  "Intervention rapide",
+  "Entreprise locale",
+  "Tarifs transparents",
 ];
 
 /**
@@ -46,15 +47,15 @@ export function Hero() {
           {...fadeUp(0.1)}
           className="mt-4 max-w-3xl text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08]"
         >
-          La déchetterie vient chez vous.
+          Stop à la déchetterie.
           <br />
-          <span className="text-navy-200">Le déménagement aussi.</span>
+          <span className="text-brand-yellow-400">On vient chez vous !</span>
         </motion.h1>
 
         <motion.p {...fadeUp(0.2)} className="mt-6 max-w-2xl text-lg sm:text-xl leading-relaxed text-navy-100">
-          Évacuation de déchets à domicile, déménagement avec ou sans équipe,
-          débarras et rénovation. Un seul interlocuteur, un prix annoncé à
-          l'avance.
+          Déchetterie à domicile, déménagement avec équipe ou véhicule avec
+          chauffeur, débarras et rénovation. Une entreprise locale, un seul
+          interlocuteur.
         </motion.p>
 
         {/* Double CTA vers les deux services vedettes */}
@@ -63,10 +64,10 @@ export function Hero() {
             to="/services/dechetterie-a-domicile"
             className="group rounded-xl border border-white/15 bg-white/5 p-5 backdrop-blur-sm transition-colors hover:bg-white/10"
           >
-            <Recycle className="size-7 text-brand-red-300" aria-hidden />
+            <Recycle className="size-7 text-brand-yellow-400" aria-hidden />
             <p className="mt-3 font-semibold text-lg">Déchetterie à domicile</p>
             <p className="mt-1 text-sm text-navy-200">
-              On dépose, vous remplissez, on trie et on évacue.
+              Vous triez, on passe chez vous, on s'occupe du reste. Dès CHF 25.–.
             </p>
             <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-red-300">
               Découvrir
@@ -77,10 +78,10 @@ export function Hero() {
             to="/services/demenagement"
             className="group rounded-xl border border-white/15 bg-white/5 p-5 backdrop-blur-sm transition-colors hover:bg-white/10"
           >
-            <Truck className="size-7 text-brand-red-300" aria-hidden />
+            <Truck className="size-7 text-brand-yellow-400" aria-hidden />
             <p className="mt-3 font-semibold text-lg">Déménagement & véhicule</p>
             <p className="mt-1 text-sm text-navy-200">
-              Équipe complète ou véhicule avec chauffeur, au choix.
+              Équipe complète ou véhicule avec chauffeur, simple et sans stress.
             </p>
             <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-red-300">
               Découvrir

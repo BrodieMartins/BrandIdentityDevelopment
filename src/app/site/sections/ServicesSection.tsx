@@ -34,6 +34,11 @@ export function ServicesSection() {
                 </div>
                 <h3 className="mt-5 text-xl sm:text-2xl font-bold text-navy-900">{s.title}</h3>
                 <p className="mt-1 text-sm font-medium text-brand-red-600">{s.hook}</p>
+                {s.priceNote && (
+                  <p className="mt-3 inline-flex self-start rounded-full bg-brand-yellow-100 px-3 py-1 text-sm font-semibold text-navy-900">
+                    {s.priceNote}
+                  </p>
+                )}
                 <p className="mt-3 leading-relaxed text-slate-600">{s.description}</p>
                 <ul className="mt-5 space-y-2.5">
                   {s.bullets.map((b) => (
@@ -71,6 +76,11 @@ export function ServicesSection() {
                   </div>
                   <h3 className="text-lg font-bold text-navy-900">{s.title}</h3>
                 </div>
+                {s.priceNote && (
+                  <p className="mt-3 inline-flex self-start rounded-full bg-brand-yellow-100 px-3 py-1 text-xs font-semibold text-navy-900">
+                    {s.priceNote}
+                  </p>
+                )}
                 <p className="mt-3 text-sm leading-relaxed text-slate-600">{s.description}</p>
                 <div className="mt-auto pt-4">
                   <Link

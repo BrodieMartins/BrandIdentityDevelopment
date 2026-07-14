@@ -8,10 +8,9 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <Logo inverted />
-            <p className="mt-4 text-sm leading-relaxed text-navy-200">
-              {company.tagline} — {company.region}.
-            </p>
+            <Logo inverted className="h-14 w-auto" />
+            <p className="mt-4 text-sm leading-relaxed text-navy-200">{company.about}</p>
+            <p className="mt-3 text-sm leading-relaxed text-navy-200">{company.tagline}.</p>
           </div>
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white">Services</h3>
@@ -39,12 +38,14 @@ export function Footer() {
                 </a>
               </li>
               <li>{company.address}</li>
+              <li>{company.website}</li>
             </ul>
           </div>
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white">Zone d'intervention</h3>
             <p className="mt-4 text-sm leading-relaxed text-navy-200">
-              {company.region}, Arc jurassien et toute la Suisse romande pour les déménagements.
+              La Chaux-de-Fonds, Le Locle, Neuchâtel, Val-de-Ruz, Val-de-Travers, Boudry,
+              Littoral neuchâtelois — et Berne sur demande pour les déménagements.
             </p>
           </div>
         </div>

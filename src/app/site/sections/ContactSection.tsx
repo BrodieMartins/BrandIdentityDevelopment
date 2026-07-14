@@ -1,4 +1,4 @@
-import { Mail, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
 import { Input } from "@/app/components/ui/input";
 import { Textarea } from "@/app/components/ui/textarea";
@@ -100,6 +100,12 @@ export function ContactSection() {
               </span>
               {company.email}
             </a>
+            <p className="mt-4 flex items-center gap-3 text-sm font-medium text-navy-100">
+              <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-white/10">
+                <MapPin className="size-5" aria-hidden />
+              </span>
+              {company.address}
+            </p>
           </div>
         </Reveal>
       </div>
