@@ -1,6 +1,5 @@
 import { Link, Navigate, useParams } from "react-router";
-import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
-import { Button } from "@/app/components/ui/button";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -8,6 +7,7 @@ import {
   AccordionTrigger,
 } from "@/app/components/ui/accordion";
 import { Reveal, Stagger, StaggerItem } from "../anim";
+import { MarkerNote, Stamp, TapedCorners } from "../components/decor";
 import { SERVICE_ICONS } from "../sections/ServicesSection";
 import { services, type ServiceId } from "../content";
 
@@ -24,45 +24,47 @@ export function ServicePage() {
 
   return (
     <>
-      {/* Bandeau titre */}
-      <section className="bg-navy-950 text-white">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-28 pb-16 sm:pt-32 sm:pb-20">
+      {/* Bandeau titre — étiquette géante tamponnée */}
+      <section className="bg-ink text-kraft-50">
+        <div className="mx-auto max-w-6xl px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32 lg:px-8">
           <Reveal>
             <Link
               to="/"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-navy-200 hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-navy-200 transition-colors hover:text-white"
             >
               <ArrowLeft className="size-4" aria-hidden />
               Retour à l'accueil
             </Link>
-            <div className="mt-6 flex items-start gap-4">
-              <div className="flex size-14 shrink-0 items-center justify-center rounded-xl bg-white/10">
+            <div className="mt-7 flex items-start gap-4">
+              <div className="flex size-14 shrink-0 -rotate-2 items-center justify-center rounded-md border-2 border-kraft-50/30 bg-kraft-50/10">
                 <Icon className="size-7 text-brand-yellow-400" aria-hidden />
               </div>
               <div>
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
+                <h1 className="stencil-title text-4xl sm:text-5xl lg:text-6xl">
                   {detail.heroTitle}
                 </h1>
-                <p className="mt-2 text-lg text-brand-yellow-400 font-medium">{detail.heroSubtitle}</p>
+                <MarkerNote className="mt-3 text-xl text-brand-yellow-400 sm:text-2xl">
+                  {detail.heroSubtitle}
+                </MarkerNote>
               </div>
             </div>
             {service.priceNote && (
-              <p className="mt-6 inline-flex rounded-full bg-white/10 px-4 py-1.5 text-sm font-semibold text-white">
+              <Stamp rotate={-2} className="mt-7 text-sm">
                 {service.priceNote}
-              </p>
+              </Stamp>
             )}
           </Reveal>
         </div>
       </section>
 
       {/* Contenu */}
-      <section className="bg-white">
+      <section className="bg-kraft">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8" style={{ paddingBlock: "var(--section-y)" }}>
           <div className="grid gap-10 lg:grid-cols-3">
             <div className="lg:col-span-2">
               <Reveal>
                 {detail.intro.map((p) => (
-                  <p key={p} className="mt-4 first:mt-0 text-lg leading-relaxed text-slate-700">
+                  <p key={p} className="mt-4 text-lg leading-relaxed text-kraft-900/85 first:mt-0">
                     {p}
                   </p>
                 ))}
@@ -70,19 +72,21 @@ export function ServicePage() {
 
               {detail.sections.map((sec) => (
                 <Reveal key={sec.title}>
-                  <h2 className="mt-12 text-2xl font-bold text-navy-900">{sec.title}</h2>
+                  <h2 className="font-stencil mt-12 text-2xl font-bold uppercase text-navy-950 sm:text-3xl">
+                    {sec.title}
+                  </h2>
                   {sec.paragraphs?.map((p) => (
-                    <p key={p} className="mt-3 leading-relaxed text-slate-700">
+                    <p key={p} className="mt-3 leading-relaxed text-kraft-900/85">
                       {p}
                     </p>
                   ))}
                   {sec.bullets && (
-                    <Stagger className="mt-5 grid gap-2.5 sm:grid-cols-2">
+                    <Stagger className="mt-5 grid gap-3 sm:grid-cols-2">
                       {sec.bullets.map((b) => (
                         <StaggerItem key={b}>
-                          <div className="flex items-start gap-2.5 rounded-lg border border-navy-100 bg-navy-50/50 px-4 py-3">
-                            <CheckCircle2 className="mt-0.5 size-4.5 shrink-0 text-brand-red-600" aria-hidden />
-                            <p className="text-sm text-slate-700">{b}</p>
+                          <div className="shipping-label flex items-start gap-2.5 px-4 py-3">
+                            <span aria-hidden className="font-marker text-brand-red-500">✔</span>
+                            <p className="text-sm text-navy-950">{b}</p>
                           </div>
                         </StaggerItem>
                       ))}
@@ -93,14 +97,16 @@ export function ServicePage() {
 
               {detail.faq && detail.faq.length > 0 && (
                 <Reveal>
-                  <h2 className="mt-12 text-2xl font-bold text-navy-900">Questions fréquentes</h2>
+                  <h2 className="font-stencil mt-12 text-2xl font-bold uppercase text-navy-950 sm:text-3xl">
+                    Questions fréquentes
+                  </h2>
                   <Accordion type="single" collapsible className="mt-4">
                     {detail.faq.map((item) => (
-                      <AccordionItem key={item.q} value={item.q}>
-                        <AccordionTrigger className="text-left font-semibold text-navy-900">
+                      <AccordionItem key={item.q} value={item.q} className="border-navy-950/20">
+                        <AccordionTrigger className="text-left font-bold text-navy-950">
                           {item.q}
                         </AccordionTrigger>
-                        <AccordionContent className="leading-relaxed text-slate-600">
+                        <AccordionContent className="leading-relaxed text-kraft-900/80">
                           {item.a}
                         </AccordionContent>
                       </AccordionItem>
@@ -111,40 +117,44 @@ export function ServicePage() {
             </div>
 
             <Reveal delay={0.15}>
-              <div className="sticky top-24 rounded-2xl border border-navy-100 bg-navy-50 p-6">
-                <h2 className="text-lg font-bold text-navy-900">Demandez votre devis gratuit</h2>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+              <div className="crate sticky top-24 rotate-[0.6deg] p-6">
+                <TapedCorners />
+                <h2 className="font-stencil text-xl font-bold uppercase text-navy-950">
+                  Demandez votre devis gratuit
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-kraft-900/80">
                   Contactez-nous dès aujourd'hui — devis gratuit, clair et sans engagement.
                 </p>
-                <Button
-                  asChild
-                  className="mt-5 w-full bg-brand-red-600 hover:bg-brand-red-700 text-white font-semibold"
+                <Link
+                  to="/#contact"
+                  className="sticker font-stencil mt-5 block px-4 py-3 text-center text-base font-bold uppercase transition-transform hover:scale-[1.02]"
                 >
-                  <Link to="/#contact">{service.cta}</Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="mt-3 w-full border-navy-200 font-semibold text-navy-900 hover:bg-white"
+                  {service.cta}
+                </Link>
+                <a
+                  href="tel:+41763291619"
+                  className="font-marker mt-4 block text-center text-lg text-navy-800 hover:text-brand-red-600"
                 >
-                  <a href="tel:+41763291619">Appelez-nous</a>
-                </Button>
+                  ou appelez-nous : +41 76 329 16 19
+                </a>
               </div>
             </Reveal>
           </div>
 
           {/* Autres services */}
-          <div className="mt-20 border-t border-navy-100 pt-10">
-            <h2 className="text-xl font-bold text-navy-900">Nos autres services</h2>
-            <div className="mt-5 grid gap-4 sm:grid-cols-3">
-              {others.map((s) => (
+          <div className="mt-20 border-t-2 border-dashed border-navy-950/25 pt-10">
+            <h2 className="font-stencil text-2xl font-bold uppercase text-navy-950">Nos autres services</h2>
+            <div className="mt-6 grid gap-5 sm:grid-cols-3">
+              {others.map((s, i) => (
                 <Link
                   key={s.id}
                   to={`/services/${s.id}`}
-                  className="group rounded-xl border border-navy-100 p-5 transition-colors hover:bg-navy-50"
+                  className={`crate group p-5 transition-transform hover:-translate-y-1 hover:rotate-0 ${
+                    i % 2 ? "rotate-[0.5deg]" : "-rotate-[0.5deg]"
+                  }`}
                 >
-                  <p className="font-semibold text-navy-900">{s.title}</p>
-                  <span className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-brand-red-600">
+                  <p className="font-stencil font-bold uppercase text-navy-950">{s.title}</p>
+                  <span className="mt-2 inline-flex items-center gap-1 text-sm font-bold text-brand-red-600">
                     Découvrir
                     <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden />
                   </span>

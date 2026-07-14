@@ -2,31 +2,49 @@ import { Section } from "../components/Section";
 import { Reveal } from "../anim";
 import { methode } from "../content";
 
-/** Méthode déménagement — timeline verticale. */
+/**
+ * Méthode déménagement — la feuille de route de la tournée :
+ * itinéraire en pointillés, chaque étape est un arrêt numéroté.
+ */
 export function MethodeSection() {
   return (
     <Section
       id="methode"
-      eyebrow="Déménagement"
+      stop={5}
+      eyebrow={methode.subtitle}
       title={methode.title}
       intro={methode.intro}
-      tone="navy"
+      tone="ink"
     >
-      <ol className="relative ml-4 border-l border-navy-700 sm:ml-6">
+      <ol
+        className="relative ml-4 sm:ml-6"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(180deg, rgba(247,240,225,0.5) 0 10px, transparent 10px 20px)",
+          backgroundSize: "3px 100%",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         {methode.steps.map((step, i) => (
-          <li key={step.title} className="relative pb-10 pl-8 sm:pl-10 last:pb-0">
+          <li key={step.title} className="relative pb-12 pl-10 last:pb-0 sm:pl-12">
             <Reveal>
               <span
                 aria-hidden
-                className="absolute -left-3.5 top-0 flex size-7 items-center justify-center rounded-full bg-brand-red-600 text-xs font-bold text-white ring-4 ring-navy-950"
+                className="font-stencil absolute -left-5 top-0 flex size-10 items-center justify-center rounded-full border-[3px] border-kraft-50 bg-brand-red-500 text-base font-bold text-white shadow-md"
+                style={{ transform: `rotate(${i % 2 ? 4 : -4}deg)` }}
               >
                 {i + 1}
               </span>
-              <h3 className="text-lg font-bold text-white">{step.title}</h3>
-              <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-navy-100">{step.text}</p>
+              <h3 className="font-stencil text-2xl font-bold uppercase text-kraft-50">{step.title}</h3>
+              <p className="mt-2 max-w-xl text-sm leading-relaxed text-navy-100">{step.text}</p>
             </Reveal>
           </li>
         ))}
+        {/* Point d'arrivée */}
+        <li aria-hidden className="relative mt-2 pl-10 sm:pl-12">
+          <span className="font-marker absolute -left-5 -top-1 rotate-[-4deg] text-2xl text-brand-yellow-400">⌂</span>
+          <p className="font-marker text-lg text-brand-yellow-400">chez vous, clés rendues.</p>
+        </li>
       </ol>
     </Section>
   );

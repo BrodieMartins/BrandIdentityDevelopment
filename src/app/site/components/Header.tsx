@@ -33,6 +33,10 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  /* Les pages services ouvrent sur un bandeau d'encre sombre :
+     tant qu'on n'a pas scrollé, le header passe en clair. */
+  const onDark = !scrolled && location.pathname.startsWith("/services");
+
   const goTo = (anchor: string) => {
     setOpen(false);
     if (location.pathname !== "/") {
@@ -45,23 +49,21 @@ export function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/90 backdrop-blur-md shadow-sm"
-          : "bg-white/0"
+        scrolled ? "bg-kraft shadow-[0_2px_10px_rgba(61,47,28,0.25)]" : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link to="/" aria-label={`${company.name} — accueil`} onClick={() => window.scrollTo({ top: 0 })}>
-          <Logo inverted={!scrolled} />
+          <Logo className="h-11 w-auto" />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-6">
+        <nav className="hidden items-center gap-6 lg:flex">
           {NAV.map((item) => (
             <button
               key={item.anchor}
               onClick={() => goTo(item.anchor)}
-              className={`text-sm font-medium whitespace-nowrap transition-colors ${
-                scrolled ? "text-navy-800 hover:text-brand-red-600" : "text-white/90 hover:text-white"
+              className={`whitespace-nowrap text-sm font-bold transition-colors ${
+                onDark ? "text-kraft-50/90 hover:text-white" : "text-navy-900 hover:text-brand-red-600"
               }`}
             >
               {item.label}
@@ -69,55 +71,57 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <a
             href={`tel:${company.phone.replace(/\s/g, "")}`}
-            className={`hidden xl:flex items-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors ${
-              scrolled ? "text-navy-900 hover:text-brand-red-600" : "text-white hover:text-brand-red-300"
+            className={`font-marker hidden items-center gap-2 whitespace-nowrap transition-colors xl:flex ${
+              onDark ? "text-kraft-50 hover:text-brand-yellow-400" : "text-navy-900 hover:text-brand-red-600"
             }`}
           >
             <Phone className="size-4" aria-hidden />
             {company.phone}
           </a>
-          <Button
+          <button
             onClick={() => goTo("contact")}
-            className="bg-brand-red-600 hover:bg-brand-red-700 text-white font-semibold"
+            className="sticker font-stencil -rotate-1 px-4 py-2 text-sm font-bold uppercase transition-transform hover:rotate-0 hover:scale-105 active:scale-95"
           >
             Devis gratuit
-          </Button>
+          </button>
 
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button
                 variant="ghost"
                 size="icon"
-                className={`lg:hidden ${scrolled ? "text-navy-900" : "text-white hover:bg-white/10 hover:text-white"}`}
+                className={`lg:hidden ${
+                  onDark ? "text-kraft-50 hover:bg-white/10 hover:text-white" : "text-navy-950 hover:bg-navy-950/10"
+                }`}
                 aria-label="Ouvrir le menu"
               >
                 <Menu className="size-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-72 bg-white">
+            <SheetContent side="right" className="bg-kraft w-72 border-l-2 border-navy-950/20">
               <SheetTitle className="sr-only">Menu</SheetTitle>
               <div className="mt-8 flex flex-col gap-1 px-4">
                 {NAV.map((item) => (
                   <button
                     key={item.anchor}
                     onClick={() => goTo(item.anchor)}
-                    className="rounded-md px-3 py-3 text-left text-base font-medium text-navy-900 hover:bg-navy-50 transition-colors"
+                    className="rounded-md px-3 py-3 text-left text-base font-bold text-navy-950 transition-colors hover:bg-navy-950/5"
                   >
                     {item.label}
                   </button>
                 ))}
-                <Button
+                <button
                   onClick={() => goTo("contact")}
-                  className="mt-4 bg-brand-red-600 hover:bg-brand-red-700 text-white font-semibold"
+                  className="sticker font-stencil mt-4 px-4 py-3 text-base font-bold uppercase"
                 >
                   Devis gratuit
-                </Button>
+                </button>
                 <a
                   href={`tel:${company.phone.replace(/\s/g, "")}`}
-                  className="mt-2 flex items-center justify-center gap-2 py-2 text-sm font-semibold text-navy-900"
+                  className="font-marker mt-3 flex items-center justify-center gap-2 py-2 text-navy-950"
                 >
                   <Phone className="size-4" aria-hidden />
                   {company.phone}

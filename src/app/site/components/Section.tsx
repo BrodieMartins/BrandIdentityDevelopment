@@ -1,47 +1,58 @@
 import type { ReactNode } from "react";
 import { Reveal } from "../anim";
+import { Stamp } from "./decor";
 
 interface SectionProps {
   id?: string;
+  /** Numéro d'arrêt sur la tournée — tamponné à côté du titre. */
+  stop?: number;
   eyebrow?: string;
   title: string;
   intro?: string;
   children: ReactNode;
-  /** Fond alterné pour rythmer la page. */
-  tone?: "white" | "tinted" | "navy";
+  /** Matière du fond pour rythmer la page. */
+  tone?: "kraft" | "paper" | "ink";
   className?: string;
 }
 
 const toneClasses: Record<NonNullable<SectionProps["tone"]>, string> = {
-  white: "bg-white",
-  tinted: "bg-navy-50",
-  navy: "bg-navy-950 text-white",
+  kraft: "bg-kraft",
+  paper: "bg-[#f9f4e6]",
+  ink: "bg-ink text-kraft-50",
 };
 
 export function Section({
   id,
+  stop,
   eyebrow,
   title,
   intro,
   children,
-  tone = "white",
+  tone = "kraft",
   className = "",
 }: SectionProps) {
-  const dark = tone === "navy";
+  const dark = tone === "ink";
   return (
-    <section id={id} className={`${toneClasses[tone]} scroll-mt-20 ${className}`}>
+    <section id={id} className={`${toneClasses[tone]} relative scroll-mt-20 ${className}`}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8" style={{ paddingBlock: "var(--section-y)" }}>
-        <Reveal className="max-w-2xl">
-          {eyebrow && (
-            <p className={`mb-3 text-sm font-semibold uppercase tracking-widest ${dark ? "text-brand-red-300" : "text-brand-red-600"}`}>
-              {eyebrow}
-            </p>
-          )}
-          <h2 className={`text-3xl sm:text-4xl font-bold tracking-tight ${dark ? "text-white" : "text-navy-900"}`}>
+        <Reveal className="max-w-3xl">
+          <div className="mb-4 flex flex-wrap items-center gap-3">
+            {stop !== undefined && (
+              <Stamp tone={dark ? "red" : "blue"} rotate={-2} className="text-xs sm:text-sm">
+                Arrêt n°{stop}
+              </Stamp>
+            )}
+            {eyebrow && (
+              <span className={`font-marker text-base sm:text-lg ${dark ? "text-brand-yellow-400" : "text-brand-red-600"}`}>
+                {eyebrow}
+              </span>
+            )}
+          </div>
+          <h2 className={`stencil-title text-4xl sm:text-5xl ${dark ? "text-kraft-50" : "text-navy-950"}`}>
             {title}
           </h2>
           {intro && (
-            <p className={`mt-4 text-base sm:text-lg leading-relaxed ${dark ? "text-navy-100" : "text-slate-600"}`}>
+            <p className={`mt-5 max-w-2xl text-base sm:text-lg leading-relaxed ${dark ? "text-navy-100" : "text-kraft-900/80"}`}>
               {intro}
             </p>
           )}

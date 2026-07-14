@@ -25,7 +25,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollManager />
-      <div className="min-h-screen bg-white text-slate-800 antialiased">
+      <div className="bg-kraft min-h-screen text-navy-950 antialiased">
         <Header />
         <main>
           <Routes>
