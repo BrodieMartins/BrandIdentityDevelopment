@@ -34,11 +34,12 @@ export function Stamp({
   rotate,
 }: {
   children: ReactNode;
-  tone?: "red" | "blue" | "ink";
+  tone?: "red" | "blue" | "ink" | "light";
   className?: string;
   rotate?: number;
 }) {
-  const toneClass = tone === "blue" ? "stamp-blue" : tone === "ink" ? "stamp-ink" : "";
+  const toneClass =
+    tone === "blue" ? "stamp-blue" : tone === "ink" ? "stamp-ink" : tone === "light" ? "stamp-light" : "";
   return (
     <span
       className={`stamp ${toneClass} ${className}`}

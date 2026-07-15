@@ -10,6 +10,7 @@ import {
 } from "@/app/components/ui/sheet";
 import { Logo } from "./Logo";
 import { company } from "../content";
+import { scrollToAnchor, scrollToTop } from "../scroll";
 
 const NAV = [
   { label: "Services", anchor: "services" },
@@ -42,7 +43,7 @@ export function Header() {
     if (location.pathname !== "/") {
       navigate(`/#${anchor}`);
     } else {
-      document.getElementById(anchor)?.scrollIntoView({ behavior: "smooth" });
+      scrollToAnchor(anchor);
     }
   };
 
@@ -53,7 +54,7 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <Link to="/" aria-label={`${company.name} — accueil`} onClick={() => window.scrollTo({ top: 0 })}>
+        <Link to="/" aria-label={`${company.name} — accueil`} onClick={() => scrollToTop()}>
           <Logo className="h-11 w-auto" />
         </Link>
 

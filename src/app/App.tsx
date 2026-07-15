@@ -4,6 +4,7 @@ import { Header } from "./site/components/Header";
 import { Footer } from "./site/components/Footer";
 import { HomePage } from "./site/pages/HomePage";
 import { ServicePage } from "./site/pages/ServicePage";
+import { initSmoothScroll, scrollToAnchor, scrollToTop } from "./site/scroll";
 
 /** Remonte en haut à chaque navigation, ou défile vers l'ancre demandée. */
 function ScrollManager() {
@@ -11,17 +12,16 @@ function ScrollManager() {
   useEffect(() => {
     if (hash) {
       // L'ancre peut appartenir à une page qui vient d'être montée.
-      requestAnimationFrame(() => {
-        document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: "smooth" });
-      });
+      requestAnimationFrame(() => scrollToAnchor(hash.slice(1)));
     } else {
-      window.scrollTo({ top: 0 });
+      scrollToTop(true);
     }
   }, [pathname, hash]);
   return null;
 }
 
 export default function App() {
+  useEffect(() => initSmoothScroll(), []);
   return (
     <BrowserRouter>
       <ScrollManager />

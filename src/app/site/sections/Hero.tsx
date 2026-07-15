@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowRight, Phone, Recycle, Truck } from "lucide-react";
 import { company } from "../content";
+import { scrollToAnchor } from "../scroll";
 import { BoxSVG, Stamp, TapeMarquee, TapedCorners, TruckSVG } from "../components/decor";
 
 const TRUST = ["Devis gratuit", "Intervention rapide", "Entreprise locale", "Tarifs transparents"];
@@ -128,7 +129,7 @@ export function Hero() {
             className="relative z-10 mt-9 flex flex-col gap-5 sm:flex-row sm:items-center"
           >
             <button
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => scrollToAnchor("contact")}
               className="sticker font-stencil inline-flex -rotate-1 items-center gap-2 self-start px-7 py-3.5 text-lg font-bold uppercase transition-transform hover:rotate-0 hover:scale-[1.03] active:scale-95"
             >
               Devis gratuit

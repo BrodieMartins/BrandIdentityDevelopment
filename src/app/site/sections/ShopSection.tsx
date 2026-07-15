@@ -3,6 +3,7 @@ import { Section } from "../components/Section";
 import { Stagger, StaggerItem } from "../anim";
 import { MarkerNote } from "../components/decor";
 import { shop } from "../content";
+import { scrollToAnchor } from "../scroll";
 
 const OFFER_ICONS = [CalendarCheck, Repeat, PackageOpen];
 
@@ -66,7 +67,7 @@ export function ShopSection() {
                     </MarkerNote>
                   )}
                   <button
-                    onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                    onClick={() => scrollToAnchor("contact")}
                     className={`font-stencil mt-5 w-full border-2 px-4 py-2.5 text-lg font-bold uppercase transition-transform hover:scale-[1.02] active:scale-95 ${
                       highlighted
                         ? "border-brand-yellow-400 bg-brand-yellow-400 text-navy-950 hover:bg-brand-yellow-300"

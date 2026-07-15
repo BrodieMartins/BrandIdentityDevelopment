@@ -38,7 +38,7 @@ export function Section({
         <Reveal className="max-w-3xl">
           <div className="mb-4 flex flex-wrap items-center gap-3">
             {stop !== undefined && (
-              <Stamp tone={dark ? "red" : "blue"} rotate={-2} className="text-xs sm:text-sm">
+              <Stamp tone={dark ? "light" : "blue"} rotate={-2} className="text-xs sm:text-sm">
                 Arrêt n°{stop}
               </Stamp>
             )}

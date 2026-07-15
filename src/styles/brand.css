@@ -167,6 +167,11 @@ body {
   color: var(--color-navy-950);
 }
 
+/* Encre claire pour tamponner les fonds sombres */
+.stamp-light {
+  color: var(--color-kraft-50);
+}
+
 /* Ruban adhésif havane semi-transparent */
 .tape {
   position: absolute;
