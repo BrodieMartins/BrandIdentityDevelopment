@@ -25,7 +25,10 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollManager />
-      <div className="bg-kraft min-h-screen text-navy-950 antialiased">
+      {/* overflow-x-clip : les rubans inclinés (scale-x-105) dépassent la
+          largeur de l'écran ; clip évite la barre de défilement horizontale
+          sans créer de conteneur de scroll (contrairement à hidden). */}
+      <div className="bg-kraft min-h-screen overflow-x-clip text-navy-950 antialiased">
         <Header />
         <main>
           <Routes>

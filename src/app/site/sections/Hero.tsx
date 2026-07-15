@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowRight, Phone, Recycle, Truck } from "lucide-react";
 import { company } from "../content";
-import { BoxSVG, MarkerNote, Stamp, TapeMarquee, TapedCorners, TruckSVG } from "../components/decor";
+import { BoxSVG, Stamp, TapeMarquee, TapedCorners, TruckSVG } from "../components/decor";
 
 const TRUST = ["Devis gratuit", "Intervention rapide", "Entreprise locale", "Tarifs transparents"];
 
