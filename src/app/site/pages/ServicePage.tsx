@@ -36,11 +36,13 @@ export function ServicePage() {
               Retour à l'accueil
             </Link>
             <div className="mt-7 flex items-start gap-4">
-              <div className="flex size-14 shrink-0 -rotate-2 items-center justify-center rounded-md border-2 border-kraft-50/30 bg-kraft-50/10">
-                <Icon className="size-7 text-brand-yellow-400" aria-hidden />
+              <div className="flex size-11 shrink-0 -rotate-2 items-center justify-center rounded-md border-2 border-kraft-50/30 bg-kraft-50/10 sm:size-14">
+                <Icon className="size-6 text-brand-yellow-400 sm:size-7" aria-hidden />
               </div>
-              <div>
-                <h1 className="stencil-title text-4xl sm:text-5xl lg:text-6xl">
+              {/* min-w-0 + break-words : les titres longs (« Déménagement… »)
+                  doivent plier dans la colonne, pas déborder de l'écran. */}
+              <div className="min-w-0">
+                <h1 className="stencil-title break-words text-[7.4vw] sm:text-5xl lg:text-6xl">
                   {detail.heroTitle}
                 </h1>
                 <MarkerNote className="mt-3 text-xl text-brand-yellow-400 sm:text-2xl">
@@ -49,7 +51,7 @@ export function ServicePage() {
               </div>
             </div>
             {service.priceNote && (
-              <Stamp rotate={-2} className="mt-7 text-sm">
+              <Stamp tone="light" rotate={-2} className="mt-7 text-sm">
                 {service.priceNote}
               </Stamp>
             )}
