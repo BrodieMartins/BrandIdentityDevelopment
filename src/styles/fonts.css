@@ -1,1 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500&display=swap');
+/*
+ * Fontes du site — Stardos Stencil (pochoir de caisse), Permanent Marker
+ * (marqueur sur carton), Archivo (texte courant), Baloo 2 (logo).
+ *
+ * Servies par le CDN Google Fonts pour le déploiement. L'aperçu artifact
+ * (hors-ligne) remplace cet import par des @font-face en data URI au moment
+ * du build de prévisualisation. Pour la mise en production finale, prévoir
+ * l'auto-hébergement des woff2 (RGPD/LPD : éviter l'appel à Google).
+ */
+@import url('https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@400;700&family=Permanent+Marker&family=Archivo:wght@100..900&family=Baloo+2:wght@400..800&display=swap');
